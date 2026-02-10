@@ -1,73 +1,43 @@
 import { Select, MenuItem, Typography, Box, Slider, FormControl, InputLabel } from "@mui/material";
+import { LANGUAGES } from "../data/sampleText";
 
-const languages = [
-  { label: "English", value: "en-IN" },
-  { label: "Hindi", value: "hi-IN" },
-  { label: "Gujarati", value: "gu-IN" },
-  { label: "Marathi", value: "mr-IN" },
-  { label: "Tamil", value: "ta-IN" },
-  { label: "Telugu", value: "te-IN" },
-];
-
-const LanguageSelector = ({ language, setLanguage, rate, setRate, isMobile }) => {
+const LanguageSelector = ({
+  language,
+  setLanguage,
+  rate,
+  setRate,
+  isMobile,
+}) => {
   return (
     <Box>
-      <FormControl fullWidth sx={{ mb: 2 }}>
-        <Typography 
-          variant="subtitle2" 
-          sx={{ 
-            mb: 1, 
-            fontWeight: 500,
-            color: 'text.secondary'
-          }}
-        >
-          Language
-        </Typography>
+      {/* Language Dropdown */}
+      <FormControl fullWidth sx={{ mb: 3 }}>
+        <InputLabel>Language</InputLabel>
         <Select
           value={language}
+          label="Language"
           onChange={(e) => setLanguage(e.target.value)}
           size={isMobile ? "medium" : "small"}
-          sx={{
-            fontSize: { xs: '0.9rem', sm: '0.875rem' },
-            '& .MuiSelect-select': {
-              py: { xs: 1.5, sm: 1 },
-            }
-          }}
         >
-          {languages.map(l => (
-            <MenuItem 
-              key={l.value} 
-              value={l.value}
-              sx={{ fontSize: { xs: '0.9rem', sm: '0.875rem' } }}
-            >
-              {l.label}
+          {LANGUAGES.map((lang) => (
+            <MenuItem key={lang.code} value={lang.code}>
+              {lang.label} ({lang.nativeLabel})
             </MenuItem>
           ))}
         </Select>
       </FormControl>
 
+      {/* Speech Rate */}
       <Box>
         <Typography 
           variant="subtitle2" 
-          gutterBottom
           sx={{ 
+            mb: 1,
             fontWeight: 500,
-            color: 'text.secondary',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
+            color: "text.secondary" 
           }}
         >
-          <span>Speech Rate</span>
-          <span 
-            sx={{ 
-              fontSize: { xs: '0.85rem', sm: '0.8rem' },
-              color: 'primary.main',
-              fontWeight: 600
-            }}
-          >
-            {rate.toFixed(1)}x
-          </span>
+          Speech Rate: {rate.toFixed(1)}x
         </Typography>
 
         <Slider
@@ -75,21 +45,14 @@ const LanguageSelector = ({ language, setLanguage, rate, setRate, isMobile }) =>
           min={0.5}
           max={2}
           step={0.1}
-          valueLabelDisplay="off"
           onChange={(e, val) => setRate(val)}
           size={isMobile ? "medium" : "small"}
-          sx={{
-            '& .MuiSlider-thumb': {
-              width: { xs: 20, sm: 16 },
-              height: { xs: 20, sm: 16 },
-            },
-            '& .MuiSlider-track': {
-              height: { xs: 6, sm: 4 },
-            },
-            '& .MuiSlider-rail': {
-              height: { xs: 6, sm: 4 },
-            },
-          }}
+          marks={[
+            { value: 0.5, label: "0.5x" },
+            { value: 1, label: "1x" },
+            { value: 1.5, label: "1.5x" },
+            { value: 2, label: "2x" },
+          ]}
         />
       </Box>
     </Box>

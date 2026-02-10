@@ -1,302 +1,183 @@
-# Vikaspedia – Dynamic Multilingual TTS Reader
+Task-3: TTS Vikaspedia - Text to Speech with Synchronized Highlighting
 
-A React-based application that demonstrates synchronized Text-to-Speech (TTS) with real-time text highlighting for multiple Indian languages. This frontend-only solution enhances content comprehension for users with low literacy or visual impairments, particularly useful for rural knowledge dissemination.
+A React-based application that demonstrates synchronized Text-to-Speech (TTS) with real-time text highlighting for multiple Indian languages using the Web Speech API's onboundary events/OS installed languages.
 
- 1. Project Overview
+1. Project Overview
 
-A React-based application that demonstrates synchronized Text-to-Speech (TTS) with real-time text highlighting for multiple Indian languages. This frontend-only solution enhances content comprehension for users with low literacy or visual impairments, particularly useful for rural knowledge dissemination.
+A frontend-only React application that reads text aloud and highlights the currently spoken word in real-time. This solution enhances content comprehension for users with low literacy or visual impairments, particularly useful for rural knowledge dissemination through Vikaspedia.
 
 2. Key Features
-- Real-time Text Highlighting: Words are highlighted as they are spoken
-- Multi-language Support: Supports 6 Indian languages including English, Hindi, Gujarati, Marathi, Tamil, and Telugu
-- Responsive Design: Works seamlessly on desktop and mobile devices
-- Speech Rate Control: Adjustable speech speed from 0.5x to 2.0x
-- Cross-browser Compatibility: Tested on Chrome, Firefox, Edge, Opera, and Safari
-- Editable Text: Users can modify the text content in real-time
-- Graceful Fallbacks: Handles unavailable voices and browser limitations
+
+Real-time Word Highlighting: Words are highlighted as they are spoken using onboundary events/OS Languages
+Multi-language Support: English, Hindi, (Marathi, Tamil, Telugu, and Gujarati)Limited support
+Playback Controls: Play, Pause, Resume, and Stop functionality
+Speech Rate Control: Adjustable speed from 0.5x to 2.0x
+Editable Text: Users can modify the text content
+Responsive Design: Works on desktop and mobile devices
+Voice Priority: Uses OS-installed local voices for best highlighting accuracy
 
 3. Supported Languages
 
-| Language | Code | Highlighting Quality | Speech Quality | Notes |
-|----------|------|-------------------|----------------|-------|
-| English | en-IN | Perfect (Boundary Events) |  Excellent | Full word boundary event support |
-| Hindi | hi-IN | Approximate  |  Good | No boundary events, uses timing fallback |
-| Gujarati | gu-IN |  Approximate  |  Good | No boundary events, uses timing fallback |
-| Marathi | mr-IN |  Approximate  |  Good | No boundary events, uses timing fallback |
-| Tamil | ta-IN |  Approximate  |  Good | No boundary events, uses timing fallback |
-| Telugu | te-IN |  Approximate  |  Good | No boundary events, uses timing fallback |
+Language     Code    Status  Requirement
+English      en-IN   ✅ Ready   Usually pre-installed
+Hindi        hi-IN   ✅ Ready   OS voice installation required
+Marathi      mr-IN   ✅ Ready   OS voice installation required
+Tamil        ta-IN   ✅ Ready   OS voice installation required
+Telugu       te-IN   ✅ Ready   OS voice installation required
+Gujarati     gu-IN   ✅ Ready   OS voice installation required
 
 4. Technology Stack
 
-- React 19.2.3 - Modern hooks-based approach
-- Material-UI (MUI) 7.3.7 - UI components and theming
-- Web Speech API - Browser-native TTS functionality
-- JavaScript ES6+ - Modern JavaScript features
+React 18 - Modern hooks-based approach
+Material-UI (MUI) - UI components and theming
+Web Speech API - Browser-native TTS with onboundary events
+JavaScript ES6+ - Modern JavaScript features
 
 5. Browser Compatibility
 
-| Browser | Version | Status | Notes |
-|---------|---------|--------|-------|
-| Google Chrome | 90+ | Excellent | Full feature support |
-| Mozilla Firefox | 85+ | Good | Some voice limitations |
-| Microsoft Edge | 90+ | Excellent | Full feature support |
-| Opera | 75+ | Good | Similar to Chrome |
-| Safari | 14+ | Limited | Voice availability varies |
+Browser  Desktop    Mobile     Notes
+Chrome   ✅ Full    ✅ Full    Best support
+Edge     ✅ Full    ✅ Full    Excellent support
+Firefox  ✅ Full    ✅ Full    Good support
+Safari   ✅ Full    ⚠️ Limited Voice availability varies
+Opera    ✅ Full    ✅ Full    Similar to Chrome
 
-6.Known Limitations
+6. Prerequisites
 
-Browser API Limitations
-- Regional Language Boundary Events: Web Speech API provides ZERO boundary events for Hindi, Gujarati, Marathi, Tamil, and Telugu
-- Highlighting Synchronization: Perfect synchronization only possible for English (en-IN)
-- Fallback Highlighting: Regional languages use timing-based approximation (not perfectly synchronized)
+Node.js 16+ and npm
+Modern web browser with Web Speech API support
+OS-installed language voices for regional languages
 
-Browser-Specific Issues
-- Safari: Limited voice support for regional languages, may need manual voice installation
-- Firefox: Fewer available voices for some regional languages
-- Mobile Browsers: Voice availability depends on device and OS version
-- Chrome: Best overall compatibility and voice support
-
-Technical Constraints
-- No External APIs: Limited to browser-native speech synthesis
-- Voice Quality: Varies significantly across browsers and devices
-- Network Dependency: First-time voice downloads may require internet connection
-- Memory Usage: Large text content may affect performance on older devices
-
-7. Prerequisites
-
-- Node.js 14+ and npm
-- Modern web browser with Web Speech API support
-- Internet connection for initial setup
-
-8. Setup Instructions
+7. Setup Instructions
 
 Step 1: Clone the Repository
 
-```bash
-git clone https://github.com/your-username/task3-tts-vikaspedia.git
-cd task3-tts-vikaspedia
-```
+git clone https://github.com/mokalaniket/tts-vikaspedia-task3.git
+cd tts-vikaspedia-task3
 
 Step 2: Install Dependencies
 
-```bash
 npm install
-```
 
-Step 3: Start the Development Server
+Step 3: Start Development Server
 
-```bash
 npm start
-```
 
-The application will open in your default browser at `http://localhost:3000`.
+The application opens at http://localhost:3000
 
 Step 4: Build for Production
 
-```bash
 npm run build
-```
 
-The production build will be created in the `build` folder.
+8. Installing Language Voices
+
+For regional languages to work with synchronized highlighting, OS-level voice installation is required.
+
+Windows 10/11:
+Open Settings → Time & Language → Language
+Click Add a language
+Search and select your language (e.g., Hindi)
+Check Text-to-speech option during installation
+Click Install and wait for completion
+Restart your browser
+
+Mac:
+Open System Preferences → Accessibility → Spoken Content
+Click System Voice dropdown
+Select Manage Voices
+Find and download the required language voice
+Restart your browser
 
 9. How to Use
 
-1. Select Language: Choose from the dropdown menu of supported languages
-2. Adjust Speech Rate: Use the slider to control reading speed (0.5x - 2.0x)
-3. Edit Text: Click on the text area to modify content
-4. Controls:
-   - Play: Start reading the text with highlighting
-   - Pause: Temporarily stop reading
-   - Resume: Continue from where you paused
-   - Stop: Stop reading and reset highlighting
+Select Language: Choose from the dropdown menu
+Adjust Speech Rate: Use the slider (0.5x - 2.0x)
+Edit Text: Modify content in the text area (when stopped)
+Play: Start reading with synchronized highlighting
+Pause: Temporarily stop reading
+Resume: Continue from where you paused
+Stop: Stop reading and reset highlighting
 
 10. Project Structure
 
-```
 src/
 ├── components/
-│   ├── Controls.jsx          # Playback control buttons
-│   ├── FallbackAlert.jsx     # Warning for unavailable voices
-│   └── LanguageSelector.jsx  # Language and rate selection
-├── hooks/
-│   └── useSpeechSynthesis.js # Custom hook for TTS functionality
+│   ├── Controls.jsx          # Play/Pause/Resume/Stop buttons
+│   ├── FallbackAlert.jsx     # Alert when voice not available
+│   └── LanguageSelector.jsx  # Language dropdown & rate slider
 ├── data/
-│   └── sampleText.js        # Sample text for different languages
+│   └── sampleText.js         # Sample text for each language
+├── hooks/
+│   └── useSpeechSynthesis.js # TTS logic with onboundary events
 ├── App.jsx                   # Main application component
 └── index.js                  # Application entry point
-```
 
 11. Technical Implementation
 
-Text Highlighting Algorithm
+How It Works
 
-The application uses a sophisticated word boundary detection system:
+User selects a language from dropdown
+App loads available voices and selects matching OS voice
+User clicks Play button
+SpeechSynthesisUtterance is created with selected voice and rate
+onboundary events fire as each word is spoken
+App calculates which word is being spoken using character position
+Highlighted word updates in real-time
+User can Pause, Resume, or Stop at any time
+On speech end, highlighting resets
 
-1. Pre-calculation: Word boundaries are calculated before speech starts
-2. Boundary Events: Uses Web Speech API's `onboundary` events
-3. Proximity Matching: Fallback to closest word boundary for accuracy
-4. State Management: React hooks manage highlighting state efficiently
+Voice Selection Priority
 
-Mobile Responsiveness
+1. Local/OS-installed voice (localService = true)
+   ↓
+2. Microsoft voice (usually local on Windows)
+   ↓
+3. Any available voice for the language
+   ↓
+4. Show error alert if no voice found
 
-- Breakpoint System: Uses Material-UI's responsive design system
-- Touch-friendly Controls: Larger buttons and touch targets on mobile
-- Adaptive Layout: Stack layout on mobile, horizontal on desktop
-- Font Scaling: Appropriate font sizes for different screen sizes
+12. Known Limitations
 
-11. Testing Notes & Observed Limitations
+Voice Requirements
+Regional languages require OS-level voice installation
+onboundary events only work reliably with local/OS voices
+Browser-only voices (Google) may not provide boundary events
 
-Critical Findings During Testing
+Browser-Specific
+Safari: Limited voice availability for regional languages
+Mobile: Voice availability depends on device and OS
+Firefox: Fewer regional language voices available
 
-1. Boundary Event Analysis
-Observation: Extensive testing revealed that the Web Speech API behaves differently across languages:
+Technical Constraints
+No external TTS APIs used (frontend-only)
+Voice quality varies across browsers and devices
+First-time voice downloads may require internet
 
-- English (en-IN): Provides rich boundary events (word, sentence, character)
-- Regional Languages: Some boundary events for Hindi, Gujarati, Marathi, Tamil, Telugu
+Android OS/Ios
+Only English speaking will be there no highlighting is there because of security constraints or os issues on both devices.
 
-Impact: Perfect text-to-speech synchronization is only achievable for English.
+13. Troubleshooting
 
-2. Highlighting Synchronization Testing
-Test Results:
+Voice Not Available
+Install the language voice in your OS (see Section 8)
+Restart browser after installation
+Try a different browser
 
-| Language | Boundary Events | Sync Quality | User Experience |
-|----------|------------------|--------------|------------------|
-| English | 15-20 events per sentence | Perfect | Excellent |
-| Hindi | 10 events total | Approximate | Good enough |
-| Gujarati | 6 events total | Approximate | Good enough |
-| Marathi | 0events total | Approximate | Good enough |
-| Tamil | 3 events total | Approximate | Good enough |
-| Telugu | 3 events total | Approximate | Good enough |
+Highlighting Not Working
+Ensure OS voice is installed (not just browser voice)
+Check browser console for errors
+Refresh the page and try again
 
-3. Browser Compatibility Testing
-Chrome/Edge: Best performance, full voice support
-Firefox: Limited regional language voices
-Safari: Inconsistent voice availability
+Mobile Issues
+Use Chrome for best compatibility
+Check device TTS settings
+Ensure language pack is installed on device
+If possible then highlighting will be there
 
-4. Mobile Testing Results
-- Android Chrome: Works well, good voice quality
-- iOS Safari: Limited regional language support
-- Mobile Firefox: Voice availability issues
+14. Author
 
-5. Testing Methodology
+Aniket Mokal
 
-Boundary Event Detection Test
-```javascript
-// Used to detect boundary events per language
-console.log('=== BOUNDARY EVENT ===');
-console.log('Language:', lang);
-console.log('Event Type:', event.name);
-console.log('Char Index:', event.charIndex);
-console.log('Total Events:', boundaryEventCount);
-```
+15. License
 
-6.Synchronization Accuracy Test
-- Test Case: Same text in different languages
-- Metric: Highlighting vs actual speech position
-- Result: English = 100% accurate, Regional = ~70% accurate
-
-7. Performance Testing
-
-Large Text Handling
-- Test: 500+ word text content
-- Result: Container grows properly, no scrollbars
-- Performance: Smooth highlighting, no lag
-
-Memory Usage
-- Small Text: < 5MB memory usage
-- Large Text: < 15MB memory usage
-- Conclusion: Efficient memory management
-
-Regression Testing Checklist
-
-Core Functionality
-- [x] English highlighting works perfectly
-- [x] Regional languages highlight approximately
-- [x] Play/Pause/Resume/Stop controls work
-- [x] Speech rate adjustment works
-- [x] Language switching works
-- [x] Text editing preserves functionality
-
-Edge Cases
-- [x] Empty text handling
-- [x] Very long text handling
-- [x] Rapid language switching
-- [x] Speech interruption handling
-- [x] Network failure scenarios
-
-Browser Testing
-- [x] Chrome Desktop/Mobile
-- [x] Edge Desktop/Mobile  
-- [x] Firefox Desktop/Mobile
-- [x] Safari Desktop/Mobile
-- [x] Opera Desktop
-
-8.Known Issues & Workarounds
-
-Issue 1: Regional Language Highlighting Not Perfect
-Problem: No boundary events for regional languages
-Solution: Implemented timing-based fallback highlighting
-User Impact: Minimal - highlighting still helps with content following
-
-Issue 2: Voice Unavailability on Some Browsers
-Problem: Some browsers don't have regional language voices
-Solution: Graceful fallback alert and user notification
-User Impact: Clear messaging about limitations
-
-Issue 3: Mobile Safari Limitations
-Problem: iOS Safari has limited TTS support
-Solution: Recommend Chrome for iOS users
-User Impact: Alternative browser recommendation
-
-Testing Environment
-
-Desktop Testing
-- OS: Windows 11, macOS Monterey
-- Browsers: Chrome 120, Firefox 119, Edge 120, Safari 17
-- Screen Sizes: 1920x1080, 1366x768, 2560x1440
-
-Mobile Testing
-- Devices: iPhone 14 pro, Samsung Galaxy S24 fe
-- Browsers: Mobile Chrome, Mobile Safari, Mobile Firefox
-- Screen Sizes: Various mobile resolutions
-
-Future Improvements Based on Testing
-
-1. Enhanced Fallback Algorithm: Improve timing-based highlighting accuracy
-2. Voice Quality Detection: Alert users about poor voice quality
-3. Offline Support: Cache voices for offline usage
-4. Accessibility Enhancements: ARIA labels and keyboard navigation
-
-12. Troubleshooting
-
-Common Issues
-
-1. Voice Not Available:
-   - Try a different language
-   - Check browser settings for speech synthesis
-   - Update browser to latest version
-
-2. Highlighting Not Syncing:
-   - Refresh the page and try again
-   - Check browser console for errors
-   - Ensure text is not empty
-
-3. Mobile Issues:
-   - Ensure device supports Web Speech API
-   - Check browser permissions
-   - Try different mobile browser
-
-Debug Mode
-
-Open browser console to see:
-- Boundary event logs
-- Voice availability status
-- Error messages
-
-13. License
-
-This project is part of an evaluation task and is intended for demonstration purposes.
-
-14. Expected Outcome
-
-A production-quality frontend prototype demonstrating synchronized Text-to-Speech with real-time text highlighting across multiple languages, browsers, and devices, meeting all specified requirements for accessibility and user experience.
+MIT License - This project is part of an evaluation task for Vikaspedia.
