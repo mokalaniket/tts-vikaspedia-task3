@@ -27,7 +27,7 @@ A frontend-only React application that reads text aloud and highlights the curre
 ## Key Features
 
 - Real-time word highlighting using `onboundary` events
-- Multi-language support (English, Hindi, Marathi, Tamil, Telugu, Gujarati — limited support)
+- Multi-language support English, Hindi(Marathi, Tamil, Telugu, Gujarati — limited support)
 - Playback controls: Play, Pause, Resume, Stop
 - Adjustable speech rate (0.5× — 2.0×)
 - Editable text area
