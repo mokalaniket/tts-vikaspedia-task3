@@ -1,105 +1,132 @@
-Task-3: TTS Vikaspedia - Text to Speech with Synchronized Highlighting
+# TTS Vikaspedia — Text-to-Speech with Synchronized Highlighting
 
-A React-based application that demonstrates synchronized Text-to-Speech (TTS) with real-time text highlighting for multiple Indian languages using the Web Speech API's onboundary events/OS installed languages.
+A React frontend that demonstrates synchronized Text-to-Speech (TTS) with real-time word highlighting for multiple Indian languages using the Web Speech API's `onboundary` events and OS-installed voices.
 
-1. Project Overview
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Supported Languages](#supported-languages)
+- [Technology Stack](#technology-stack)
+- [Browser Compatibility](#browser-compatibility)
+- [Prerequisites](#prerequisites)
+- [Setup Instructions](#setup-instructions)
+- [Installing Language Voices](#installing-language-voices)
+- [How to Use](#how-to-use)
+- [Project Structure](#project-structure)
+- [Technical Implementation](#technical-implementation)
+- [Voice Selection Priority](#voice-selection-priority)
+- [Known Limitations](#known-limitations)
+- [Troubleshooting](#troubleshooting)
+- [Author](#author)
+- [License](#license)
 
-A frontend-only React application that reads text aloud and highlights the currently spoken word in real-time. This solution enhances content comprehension for users with low literacy or visual impairments, particularly useful for rural knowledge dissemination through Vikaspedia.
+## Project Overview
 
-2. Key Features
+A frontend-only React application that reads text aloud and highlights the currently spoken word in real-time. It aims to improve comprehension for users with low literacy or visual impairments, useful for rural knowledge dissemination (Vikaspedia).
 
-Real-time Word Highlighting: Words are highlighted as they are spoken using onboundary events/OS Languages
-Multi-language Support: English, Hindi, (Marathi, Tamil, Telugu, and Gujarati)Limited support
-Playback Controls: Play, Pause, Resume, and Stop functionality
-Speech Rate Control: Adjustable speed from 0.5x to 2.0x
-Editable Text: Users can modify the text content
-Responsive Design: Works on desktop and mobile devices
-Voice Priority: Uses OS-installed local voices for best highlighting accuracy
+## Key Features
 
-3. Supported Languages
+- Real-time word highlighting using `onboundary` events
+- Multi-language support (English, Hindi, Marathi, Tamil, Telugu, Gujarati — limited support)
+- Playback controls: Play, Pause, Resume, Stop
+- Adjustable speech rate (0.5× — 2.0×)
+- Editable text area
+- Responsive UI (desktop & mobile)
+- Prefers OS-installed/local voices for accurate boundary events
 
-Language     Code    Status  Requirement
-English      en-IN   ✅ Ready   Usually pre-installed
-Hindi        hi-IN   ✅ Ready   OS voice installation required
-Marathi      mr-IN   ✅ Ready   OS voice installation required
-Tamil        ta-IN   ✅ Ready   OS voice installation required
-Telugu       te-IN   ✅ Ready   OS voice installation required
-Gujarati     gu-IN   ✅ Ready   OS voice installation required
+## Supported Languages
 
-4. Technology Stack
+| Language | Code  | Status | Requirement |
+|---|---:|:---:|---|
+| English  | `en-IN` | ✅ Ready | Usually pre-installed |
+| Hindi    | `hi-IN` | ✅ Ready | OS voice installation required |
+| Marathi  | `mr-IN` | ✅ Ready | OS voice installation required |
+| Tamil    | `ta-IN` | ✅ Ready | OS voice installation required |
+| Telugu   | `te-IN` | ✅ Ready | OS voice installation required |
+| Gujarati | `gu-IN` | ✅ Ready | OS voice installation required |
 
-React 18 - Modern hooks-based approach
-Material-UI (MUI) - UI components and theming
-Web Speech API - Browser-native TTS with onboundary events
-JavaScript ES6+ - Modern JavaScript features
+## Technology Stack
 
-5. Browser Compatibility
+- React 18 (hooks)
+- Material-UI (MUI)
+- Web Speech API (`SpeechSynthesis`, `SpeechSynthesisUtterance`)
+- JavaScript (ES6+)
 
-Browser  Desktop    Mobile     Notes
-Chrome   ✅ Full    ✅ Full    Best support
-Edge     ✅ Full    ✅ Full    Excellent support
-Firefox  ✅ Full    ✅ Full    Good support
-Safari   ✅ Full    ⚠️ Limited Voice availability varies
-Opera    ✅ Full    ✅ Full    Similar to Chrome
+## Browser Compatibility
 
-6. Prerequisites
+| Browser | Desktop | Mobile | Notes |
+|---|:---:|:---:|---|
+| Chrome  | ✅ Full  | ✅ Full  | Best support |
+| Edge    | ✅ Full  | ✅ Full  | Excellent support |
+| Firefox | ✅ Full  | ✅ Full  | Good support |
+| Safari  | ✅ Full  | ⚠️ Limited | Voice availability varies |
+| Opera   | ✅ Full  | ✅ Full  | Similar to Chrome |
 
-Node.js 16+ and npm
-Modern web browser with Web Speech API support
-OS-installed language voices for regional languages
+## Prerequisites
 
-7. Setup Instructions
+- Node.js 16+ and npm
+- Modern browser with Web Speech API support
+- OS-installed voices for regional languages (for reliable `onboundary` events)
 
-Step 1: Clone the Repository
+## Setup Instructions
 
+1. Clone the repository:
+
+```bash
 git clone https://github.com/mokalaniket/tts-vikaspedia-task3.git
 cd tts-vikaspedia-task3
+```
 
-Step 2: Install Dependencies
+2. Install dependencies:
 
+```bash
 npm install
+```
 
-Step 3: Start Development Server
+3. Start the development server:
 
+```bash
 npm start
+```
 
-The application opens at http://localhost:3000
+The app will open at: http://localhost:3000
 
-Step 4: Build for Production
+4. Build for production:
 
+```bash
 npm run build
+```
 
-8. Installing Language Voices
+## Installing Language Voices
 
-For regional languages to work with synchronized highlighting, OS-level voice installation is required.
+To get synchronized highlighting for regional languages, install the OS-level voice for the language.
 
 Windows 10/11:
-Open Settings → Time & Language → Language
-Click Add a language
-Search and select your language (e.g., Hindi)
-Check Text-to-speech option during installation
-Click Install and wait for completion
-Restart your browser
 
-Mac:
-Open System Preferences → Accessibility → Spoken Content
-Click System Voice dropdown
-Select Manage Voices
-Find and download the required language voice
-Restart your browser
+1. Open Settings → Time & Language → Language
+2. Click **Add a language**
+3. Search and select the language (e.g., Hindi)
+4. Enable **Text-to-speech** during installation
+5. Install and restart your browser
 
-9. How to Use
+macOS:
 
-Select Language: Choose from the dropdown menu
-Adjust Speech Rate: Use the slider (0.5x - 2.0x)
-Edit Text: Modify content in the text area (when stopped)
-Play: Start reading with synchronized highlighting
-Pause: Temporarily stop reading
-Resume: Continue from where you paused
-Stop: Stop reading and reset highlighting
+1. Open System Preferences → Accessibility → Spoken Content
+2. Click **System Voice** → **Manage Voices**
+3. Download the required language voice
+4. Restart your browser
 
-10. Project Structure
+## How to Use
 
+- **Select language** from the dropdown
+- **Adjust speech rate** with the slider (0.5× — 2.0×)
+- **Edit text** in the text area (available when stopped)
+- **Play** to start reading with synchronized highlighting
+- **Pause / Resume / Stop** as needed
+
+## Project Structure
+
+```text
 src/
 ├── components/
 │   ├── Controls.jsx          # Play/Pause/Resume/Stop buttons
@@ -111,73 +138,46 @@ src/
 │   └── useSpeechSynthesis.js # TTS logic with onboundary events
 ├── App.jsx                   # Main application component
 └── index.js                  # Application entry point
+```
 
-11. Technical Implementation
+## Technical Implementation
 
-How It Works
+### How it works
 
-User selects a language from dropdown
-App loads available voices and selects matching OS voice
-User clicks Play button
-SpeechSynthesisUtterance is created with selected voice and rate
-onboundary events fire as each word is spoken
-App calculates which word is being spoken using character position
-Highlighted word updates in real-time
-User can Pause, Resume, or Stop at any time
-On speech end, highlighting resets
+1. User selects a language from the dropdown
+2. App loads available voices and prefers matching OS-installed voices
+3. User clicks **Play**
+4. A `SpeechSynthesisUtterance` is created with the selected voice and rate
+5. `onboundary` events fire as words are spoken
+6. The app determines the current word by character positions and updates highlighting in real time
+7. User can Pause, Resume, or Stop; on end, highlighting resets
 
-Voice Selection Priority
+## Voice Selection Priority
 
-1. Local/OS-installed voice (localService = true)
-   ↓
-2. Microsoft voice (usually local on Windows)
-   ↓
+1. Local / OS-installed voice (`localService = true`)
+2. Microsoft voice (on Windows)
 3. Any available voice for the language
-   ↓
-4. Show error alert if no voice found
+4. Show an alert if no suitable voice is found
 
-12. Known Limitations
+## Known Limitations
 
-Voice Requirements
-Regional languages require OS-level voice installation
-onboundary events only work reliably with local/OS voices
-Browser-only voices (Google) may not provide boundary events
+- Regional languages require OS-level voice installation for reliable `onboundary` events
+- Browser-only voices (e.g., Google voices) may not provide boundary events
+- Safari and some mobile browsers have limited regional language support
+- No external TTS APIs are used (frontend-only). Voice quality varies by OS/browser
 
-Browser-Specific
-Safari: Limited voice availability for regional languages
-Mobile: Voice availability depends on device and OS
-Firefox: Fewer regional language voices available
+Note about Android / iOS: highlighting may not work on some mobile devices due to OS/browser constraints.
 
-Technical Constraints
-No external TTS APIs used (frontend-only)
-Voice quality varies across browsers and devices
-First-time voice downloads may require internet
+## Troubleshooting
 
-Android OS/Ios
-Only English speaking will be there no highlighting is there because of security constraints or os issues on both devices.
+- **Voice not available**: Install the OS language voice (see "Installing Language Voices") and restart the browser
+- **Highlighting not working**: Ensure a local OS voice is installed, check console for errors, refresh the page
+- **Mobile issues**: Use Chrome where possible and confirm device TTS/language packs
 
-13. Troubleshooting
-
-Voice Not Available
-Install the language voice in your OS (see Section 8)
-Restart browser after installation
-Try a different browser
-
-Highlighting Not Working
-Ensure OS voice is installed (not just browser voice)
-Check browser console for errors
-Refresh the page and try again
-
-Mobile Issues
-Use Chrome for best compatibility
-Check device TTS settings
-Ensure language pack is installed on device
-If possible then highlighting will be there
-
-14. Author
+## Author
 
 Aniket Mokal
 
-15. License
+## License
 
-MIT License - This project is part of an evaluation task for Vikaspedia.
+MIT License — this project is part of an evaluation task for Vikaspedia.
